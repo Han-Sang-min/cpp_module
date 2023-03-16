@@ -1,10 +1,10 @@
 CXX = c++
 
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 
-TARGET = megaphone
+TARGET = PhoneBook
 
-SRC = megaphone.cpp
+SRC = Main.cpp 
 
 OBJ = $(SRC:.cpp=.o)
 
