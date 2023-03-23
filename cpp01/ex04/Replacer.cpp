@@ -24,7 +24,6 @@ void Replacer::replace() {
 		return ;
 	std::string tmp;
 	std::size_t pos;
-	std::cout << "runing..." << std::endl;
 	while (std::getline(input_file, tmp)) {
 		while ((pos = tmp.find(s1)) != std::string::npos) {
 			tmp.erase(pos, s1.length());
