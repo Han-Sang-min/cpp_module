@@ -1,7 +1,8 @@
 #include "Replacer.hpp"
 
 Replacer::Replacer() 
-	: file_name(""), s1(""), s2("") {}
+	: file_name(""), s1(""), s2("") {
+}
 
 bool Replacer::ac_checking(int ac) {
 	if (ac != 4) {
