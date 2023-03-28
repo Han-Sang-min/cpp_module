@@ -16,12 +16,11 @@ public:
     void setRawBits(int const raw);
     float toFloat( void ) const;
     int toInt( void ) const;
-    // std::ostream& operator<<(std::ostream& os) const;
-    std::ostream& operator<<(std::ostream& os, const Fixed& fixed) const;
+    std::ostream& operator<<(std::ostream& os) const;
 private:
     int fixed_point_value;
     static const int fractional_bits = 8;
 
 };
 
-// std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);

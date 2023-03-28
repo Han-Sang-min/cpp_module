@@ -2,7 +2,7 @@ CXX = c++
 
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 
-TARGET = Fixed
+TARGET = ex01
 
 SRC =	main.cpp \
 		Fixed.cpp

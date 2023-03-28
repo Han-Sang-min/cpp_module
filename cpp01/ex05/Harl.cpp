@@ -13,7 +13,7 @@ void Harl::complain(const std::string level) {
 	for (int i = 0; i < 4; i++) {
 		if (levels[i].key == level) {
 			(this->*levels[i].func)();
-			return  ;
+			return ;
 		}
 	}
 	std::cerr << "There are no matching levels." << std::endl;
