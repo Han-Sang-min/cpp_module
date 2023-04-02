@@ -1,5 +1,11 @@
 {
 	"files.associations": {
-		"iosfwd": "cpp"
+		"iosfwd": "cpp",
+		"__config": "cpp",
+		"__nullptr": "cpp",
+		"cmath": "cpp",
+		"cstddef": "cpp",
+		"limits": "cpp",
+		"type_traits": "cpp"
 	}
 }
