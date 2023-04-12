@@ -1,3 +1,5 @@
+/* 클래스 멤버 주소 확인 */
+
 #include <iostream>
 #include <cstdint>
 

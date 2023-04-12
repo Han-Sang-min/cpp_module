@@ -5,28 +5,33 @@
 #include "WrongCat.hpp"
 
 int main() {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    const WrongAnimal* wrongMeta = new WrongAnimal();
-    const WrongAnimal* wrongI = new WrongCat();
+    {
+        const Animal* meta = new Animal();
+        const Animal* j = new Dog();
+        const Animal* i = new Cat();
+        
+        std::cout << j->getType() << " " << std::endl;
+        std::cout << i->getType() << " " << std::endl;
+        meta->makeSound();
+        j->makeSound();
+        i->makeSound();
 
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    std::cout << wrongMeta->getType() << std::endl;
-    std::cout << wrongI->getType() << std::endl;
+        delete meta;
+        delete j;
+        delete i;
+    }
+    std::cout << std::endl;
+    {
+        const WrongAnimal* wrongMeta = new WrongAnimal();
+        const WrongAnimal* wrongI = new WrongCat();
 
-    j->makeSound();
-    i->makeSound();
-    meta->makeSound();
-    wrongMeta->makeSound();
-    wrongI->makeSound();
-	delete meta;
-    delete j;
-    delete i;
-    delete wrongMeta;
-    delete wrongI;
+        std::cout << wrongMeta->getType() << " " << std::endl;
+        std::cout << wrongI->getType() << " " << std::endl;
+        wrongMeta->makeSound();
+        wrongI->makeSound();
 
-	// system("leaks ex00");
+        delete wrongMeta;
+        delete wrongI;
+    }
     return 0;
 }

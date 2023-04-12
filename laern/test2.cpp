@@ -1,3 +1,5 @@
+/* overiding 런타임의 동작 확인 */
+
 #include <iostream>
 
 class Animal {

@@ -1,3 +1,5 @@
+/* 소멸자에 어디에 virtual 키워드를 붙이느냐에 대한 차이 */
+
 #include <iostream>
 
 class Base1 {

@@ -21,3 +21,7 @@ WrongCat &WrongCat::operator=(const WrongCat &src) {
 WrongCat::~WrongCat() {
     std::cout << "WrongCat destructor called" << std::endl;
 }
+
+void WrongCat::makeSound() const {
+    std::cout << "Wrong~!" << std::endl;
+}

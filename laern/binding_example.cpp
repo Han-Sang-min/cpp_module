@@ -1,22 +1,33 @@
+/* 클래스 멤버 주소 확인 */
+
 #include <iostream>
+#include <cstdint>
 
-class Base {
+class Sample {
 public:
-    void staticBinding() {
-        std::cout << "Static binding function called" << std::endl;
-    }
+    int a; //4
+    char b; //1
+    float c; //4
 
-    virtual void dynamicBinding() {
-        std::cout << "Dynamic binding function called" << std::endl;
+    void foo() {
+        std::cout << "foo() called" << std::endl;
     }
 };
 
 int main() {
-    Base base;
-    Base* basePtr = &base;
+    Sample obj;
 
-    basePtr->staticBinding(); // 정적 바인딩된 함수 호출
-    basePtr->dynamicBinding(); // 동적 바인딩된 함수 호출
+    // 객체 메모리 구조를 확인하기 위해 멤버 변수의 주소를 출력합니다.
+    std::cout << "Address of obj: " << &obj << std::endl;
+    std::cout << "Address of obj.a: " << &obj.a << std::endl;
+    std::cout << "Address of obj.b: " << &obj.b << std::endl;
+    std::cout << "Address of obj.c: " << &obj.c << std::endl;
+
+    // 멤버 함수의 주소를 출력합니다.
+    // void (Sample::*memFn)() = &Sample::foo;
+    // uintptr_t memFnAddress = reinterpret_cast<uintptr_t>(*(uintptr_t*)&memFn);
+    void (Sample::*foo)(void) = &Sample::foo;
+    std::cout << "Address of obj.foo: " << reinterpret_cast<void *&>(foo) << std::endl;
 
     return 0;
 }
