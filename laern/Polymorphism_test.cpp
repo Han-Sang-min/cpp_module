@@ -13,7 +13,7 @@ public:
 class Derived : public Base {
 public:
     Derived() : y(2) {}
-    virtual void dynamicBinding() { std::cout << "Derived::dynamicBinding()" << std::endl; }
+    void dynamicBinding() { std::cout << "Derived::dynamicBinding()" << std::endl; }
 
     int y;
 };
