@@ -1,11 +1,15 @@
 #include "ScalarConverter.hpp"
+#include <exception>
 
 void ScalarConverter::convert(std::string literal)
 {
+	if (!literal.empty() && literal[literal.size() - 1] == 'f')
+    	literal.erase(literal.size() - 1);
+
 	try
 	{
 		/* Convert to Ascii */
-		char c = std::stoi(literal);
+		char c = ft_sto<int>(literal);
 		if (std::isprint(c))
 			std::cout << "char: '" << c << "'\n";
 		else
@@ -19,7 +23,7 @@ void ScalarConverter::convert(std::string literal)
 	try
 	{
 		/* Convert to int */
-		int i = std::stoi(literal);
+		int i = ft_sto<int>(literal);
 		std::cout << "int: " << i << "\n";
 	}
 	catch(const std::exception &e)
@@ -34,7 +38,7 @@ void ScalarConverter::convert(std::string literal)
 	try
 	{
 		/* Convert to float */
-		float f = std::stof(literal);
+		float f = ft_sto<float>(literal);
 		std::cout << "float: " << f << (f == (int)f ? ".0" : "") << "f\n";
 	}
 	catch(const std::exception &e)
@@ -45,7 +49,7 @@ void ScalarConverter::convert(std::string literal)
 	try
 	{
 		/* Convert to float */
-		double d = std::stod(literal);
+		double d = ft_sto<double>(literal);
 		std::cout << "double: " << d << (d == (int)d ? ".0" : "") << "\n";
 	}
 	catch(const std::exception &e)
