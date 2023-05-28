@@ -7,7 +7,7 @@ Form::Form(const Form &other) : name(other.name), isSigned(false), gradeToSign(o
 Form &Form::operator=(const Form &other)
 {
 	const_cast<std::string &>(name) = other.name;
-	isSigned = false;
+	isSigned = other.isSigned;
 	const_cast<int &>(gradeToSign) = other.gradeToSign;
 	const_cast<int &>(gradeToExecute) = other.gradeToExecute;
 

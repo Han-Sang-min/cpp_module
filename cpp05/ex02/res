@@ -1,0 +1,18 @@
+name: home
+isSigned: 0
+gradeToSign: 145
+gradeToExecute: 137
+
+name: target
+isSigned: 0
+gradeToSign: 72
+gradeToExecute: 45
+
+name: criminal
+isSigned: 0
+gradeToSign: 25
+gradeToExecute: 5
+
+Bob couldn’t execute home because Grade too low.
+Bob couldn’t execute target because Grade too low.
+Bob couldn’t execute criminal because Grade too low.
