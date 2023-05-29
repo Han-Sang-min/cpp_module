@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -6,33 +5,66 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-    Bureaucrat bob("Bob", 1);
-    ShrubberyCreationForm shrubberyForm("home");
-    RobotomyRequestForm robotomyForm("target");
-    PresidentialPardonForm pardonForm("criminal");
-
-    // Form 생성 테스트
-    std::cout << shrubberyForm << std::endl;
-    std::cout << robotomyForm << std::endl;
-    std::cout << pardonForm << std::endl;
-
-    // Form 실행 테스트
+    // Bureaucrat Test
     try {
-        bob.executeForm(shrubberyForm);
-    } catch(std::exception &e) {
-        std::cout << "Caught exception: " << e.what() << std::endl;
+        Bureaucrat bob("Bob", 150);
+        Bureaucrat alice("Alice", 1);
+        
+        std::cout << bob << std::endl;
+        std::cout << alice << std::endl;
+    } catch (std::exception & e) {
+        std::cout << e.what() << std::endl;
     }
 
+    std::cout << std::endl;
+    
+    // ShrubberyCreationForm Test
     try {
-        bob.executeForm(robotomyForm);
-    } catch(std::exception &e) {
-        std::cout << "Caught exception: " << e.what() << std::endl;
+        ShrubberyCreationForm form("home");
+        Bureaucrat bob("Bob", 150);
+
+        bob.signForm(form);
+        bob.executeForm(form);
+    } catch (std::exception & e) {
+        std::cout << e.what() << std::endl;
     }
 
+    std::cout << std::endl;
+
+    // RobotomyRequestForm Test
     try {
-        bob.executeForm(pardonForm);
-    } catch(std::exception &e) {
-        std::cout << "Caught exception: " << e.what() << std::endl;
+        RobotomyRequestForm form("robot");
+        Bureaucrat alice("Alice", 1);
+
+        alice.signForm(form);
+        alice.executeForm(form);
+    } catch (std::exception & e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    // PresidentialPardonForm Test
+    try {
+        PresidentialPardonForm form("president");
+        Bureaucrat alice("Alice", 1);
+
+        alice.signForm(form);
+        alice.executeForm(form);
+    } catch (std::exception & e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    try {
+        ShrubberyCreationForm form("home");
+        Bureaucrat alice("Alice", 1);
+
+        alice.signForm(form);
+        alice.executeForm(form);
+    } catch (std::exception & e) {
+        std::cout << e.what() << std::endl;
     }
 
     return 0;
