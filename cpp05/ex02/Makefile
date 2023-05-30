@@ -2,9 +2,14 @@ CXX = c++
 
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 
-TARGET = PhoneBook
+TARGET = ex02
 
-SRC = Main.cpp 
+SRC =	main.cpp \
+		Bureaucrat.cpp \
+		AForm.cpp \
+		PresidentialPardonForm.cpp \
+		RobotomyRequestForm.cpp \
+		ShrubberyCreationForm.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -19,4 +24,4 @@ $(TARGET): $(OBJ)
 re : clean all
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f $(OBJ) $(TARGET) *_shrubbery

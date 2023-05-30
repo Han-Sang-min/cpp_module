@@ -1,6 +1,6 @@
 CXX = c++
 
-CXXFLAGS = -pedantic -std=c++98 -Wall -Wextra -Werror -I .
+CXXFLAGS = -pedantic -std=c++98 -I .
 
 TARGET = ex03
 

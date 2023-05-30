@@ -2,7 +2,7 @@
 #include "ICharacter.hpp"
 
 Cure::Cure() : AMateria("cure") {}
-Cure::Cure(Cure const &other) : AMateria(other.getType) {}
+Cure::Cure(Cure const &other) : AMateria(other.getType()) {}
 Cure::~Cure() {}
 
 AMateria* Cure::clone() const {
