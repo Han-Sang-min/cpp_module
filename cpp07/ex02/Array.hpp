@@ -9,15 +9,21 @@ class Array
 		unsigned int n;
 
 	public:
-		Array() : n(0) { arr = new T(); }
+		Array() : n(0) { arr = new T[0]; }
 		
 		Array(const Array &other)
 		{
-			*this = other;
+			n = other.n;
+			arr = new T[n]();
+			for (unsigned int i = 0; i < n; ++i)
+			{
+				arr[i] = other.arr[i];
+			}
 		}
 
 		Array &operator=(const Array &other)
 		{
+			delete []arr;
 			if (this == &other)
 				return *this;
 			arr = new T[other.n]();
@@ -31,7 +37,7 @@ class Array
 		
 		~Array()
 		{
-			delete arr;
+			delete []arr;
 		}
 
 		T &operator[](unsigned int index)

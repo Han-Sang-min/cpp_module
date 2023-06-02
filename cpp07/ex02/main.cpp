@@ -1,75 +1,53 @@
-#include "Array.hpp"
 #include <iostream>
+#include <Array.hpp>
 
-void testInt() {
-    std::cout << "Testing integer Array:\n";
-    Array<int> intArray(3);
-
-    intArray[0] = 1;
-    intArray[1] = 2;
-    intArray[2] = 3;
-
-    for (unsigned int i = 0; i < intArray.size(); i++) {
-        std::cout << intArray[i] << " ";
+#define MAX_VAL 750
+int main(int, char**)
+{
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
     }
-    std::cout << "\n";
-
-    try {
-        std::cout << intArray[3];
-    } catch (std::exception& e) {
-        std::cout << "Caught exception: " << e.what() << "\n";
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
     }
-}
 
-void testDouble() {
-    std::cout << "Testing double Array:\n";
-    Array<double> doubleArray(3);
-
-    doubleArray[0] = 1.1;
-    doubleArray[1] = 2.2;
-    doubleArray[2] = 3.3;
-
-    for (unsigned int i = 0; i < doubleArray.size(); i++) {
-        std::cout << doubleArray[i] << " ";
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
     }
-    std::cout << "\n";
-
-    try {
-        std::cout << doubleArray[3];
-    } catch (std::exception& e) {
-        std::cout << "Caught exception: " << e.what() << "\n";
+    try
+    {
+        numbers[-2] = 0;
     }
-}
-
-void testCopy() {
-    std::cout << "Testing copying Array:\n";
-    Array<int> originalArray(3);
-
-    originalArray[0] = 1;
-    originalArray[1] = 2;
-    originalArray[2] = 3;
-
-    Array<int> copiedArray(originalArray);
-
-    copiedArray[0] = 10;
-
-    std::cout << "Original array: ";
-    for (unsigned int i = 0; i < originalArray.size(); i++) {
-        std::cout << originalArray[i] << " ";
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
-    std::cout << "\n";
-
-    std::cout << "Copied array: ";
-    for (unsigned int i = 0; i < copiedArray.size(); i++) {
-        std::cout << copiedArray[i] << " ";
+    try
+    {
+        numbers[MAX_VAL] = 0;
     }
-    std::cout << "\n";
-}
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
-int main() {
-    testInt();
-    testDouble();
-    testCopy();
-
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
     return 0;
 }
