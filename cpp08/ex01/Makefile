@@ -2,9 +2,10 @@ CXX = c++
 
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 
-TARGET = ex00
+TARGET = ex01
 
 SRC =	main.cpp \
+		Span.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
