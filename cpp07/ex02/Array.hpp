@@ -40,7 +40,7 @@ class Array
 			delete []arr;
 		}
 
-		T &operator[](unsigned int index)
+		T &operator[](unsigned int index) const
 		{
 			if (index >= n)
 				throw std::out_of_range("Array index out of bounds");
