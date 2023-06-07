@@ -2,11 +2,9 @@ CXX = c++
 
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 
-TARGET = PhoneBook
+TARGET = ex02
 
 SRC =	main.cpp \
-		PhoneBook.cpp \
-		Contact.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

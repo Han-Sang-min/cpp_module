@@ -5,7 +5,6 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 TARGET = ex00
 
 SRC =	main.cpp \
-		Bureaucrat.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
