@@ -1,16 +1,12 @@
 CXX = c++
 
-CXXFLAGS = -pedantic -std=c++98 -I .
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 
-TARGET = ex03
+TARGET = ex00
 
-SRC = 	main.cpp \
-		AMateria.cpp \
-		Ice.cpp \
-		Cure.cpp \
-		Character.cpp \
-		MateriaSource.cpp
-	
+SRC =	main.cpp \
+		Bureaucrat.cpp \
+
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)
@@ -25,5 +21,3 @@ re : clean all
 
 clean:
 	rm -f $(OBJ) $(TARGET)
-
-.PHONY: all clean re
