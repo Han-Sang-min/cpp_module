@@ -1,20 +1,32 @@
 #include "BitcoinExchange.hpp"
+#include <exception>
+#include <stdexcept>
+#include <string>
 
 BitcoinExchange::BitcoinExchange() {
+    /* part of input file */
 	std::ifstream file("data.csv");
-    if (!file.is_open()) {
-        std::cerr << "Error: could not open file." << std::endl;
-        return;
-    }
+    if (!file.is_open())
+        throw std::runtime_error("Error: open fail");
     
+    /* first line of csv processing part */
     std::string line;
+    {
+        std::getline(file, line);
+        if (line != "date,exchange_rate")
+            throw std::runtime_error("Error: Unknown header format");
+    }
+
+    /* rest line of csv processing part */
+    /* [FEAT]add error handle. for instance string, double, separator */
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string date;
-        double price;
+        double exchange_rate;
         std::getline(ss, date, ',');
-        ss >> price;
-        prices[date] = price;
+        ss >> exchange_rate;
+        std::cout << date << exchange_rate << std::endl;
+        prices[date] = exchange_rate;
     }
 }
 

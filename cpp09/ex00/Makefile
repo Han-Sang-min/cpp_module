@@ -8,17 +8,22 @@ OBJ = $(SRC:.cpp=.o)
 OBJDIR = obj/
 OBJS = $(addprefix $(OBJDIR), $(OBJ))
 CXXFLAGS = -Wall -Wextra -Werror
+DEBUGFLAGS = -g
 
 all: $(NAME)
 
+debug: DEBUGFLAGS += -g
+debug: $(NAME)
+	@lldb $(NAME)
+
 $(NAME): $(OBJS)
 	@echo "\033[0;33mCompiling...\033[0m"
-	@$(CXX) $(CXXFLAGS) -o $@ $^
+	@$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) -o $@ $^
 	@echo "\033[0;32mcompiled!\033[0m"
 
 $(OBJDIR)%.o: %.cpp
 	@mkdir -p $(OBJDIR)
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) -c $< -o $@
 
 clean:
 	@echo "\033[0;31mCleaning object files...\033[0m"
@@ -30,4 +35,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all debug clean fclean re
