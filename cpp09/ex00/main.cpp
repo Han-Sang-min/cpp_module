@@ -1,14 +1,18 @@
 #include <iostream>
+#include <stdexcept>
 #include "BitcoinExchange.hpp"
 
 int main(int argc, char** argv) {
-    if (argc != 2) {
-        std::cout << "Usage: " << argv[0] << " [Input File]" << std::endl;
-        return 1;
-    }
+    try{
+        if (argc != 2) {
+            throw std::runtime_error("could not open file.");
+        }
 
-    BitcoinExchange btcExchange;
-    btcExchange.compute_prices(argv[1]);
+        BitcoinExchange btcExchange;
+        btcExchange.computePrices(argv[1]);
+    } catch (const std::runtime_error &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 
     return 0;
 }
