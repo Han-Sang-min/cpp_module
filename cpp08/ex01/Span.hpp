@@ -4,16 +4,16 @@
 
 class Span {
 	private:
-		std::vector<int> vec;
-		unsigned int N;
+		std::vector<int> _vec;
+		unsigned int _n;
 
-	public:
 		Span();
+	public:
+		Span(unsigned int n);
 		Span(const Span &other);
 		Span &operator=(const Span &other);
 		~Span();
 
-		Span(unsigned int n);
 
 		void addNumber(int value);
 		int shortestSpan() const;

@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
         btcExchange.computePrices(argv[1]);
     } catch (const std::runtime_error &e) {
         std::cerr << "Error: " << e.what() << std::endl;
+        return 1;
     }
 
     return 0;

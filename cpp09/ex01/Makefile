@@ -1,8 +1,8 @@
-NAME = btc
+NAME = RPN
 CXX = c++
 
 SRC = 	main.cpp \
-		BitcoinExchange.cpp
+		RPN.cpp
 
 OBJ = $(SRC:.cpp=.o)
 OBJDIR = obj/
@@ -14,7 +14,7 @@ all: $(NAME)
 
 debug: DEBUGFLAGS += -g
 debug: fclean $(NAME)
-	@lldb $(NAME) input.txt
+	@lldb $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "\033[0;33mCompiling...\033[0m"
