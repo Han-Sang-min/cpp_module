@@ -14,7 +14,7 @@ all: $(NAME)
 
 debug: DEBUGFLAGS += -g
 debug: $(NAME)
-	@lldb $(NAME)
+	@lldb $(NAME) input.txt
 
 $(NAME): $(OBJS)
 	@echo "\033[0;33mCompiling...\033[0m"

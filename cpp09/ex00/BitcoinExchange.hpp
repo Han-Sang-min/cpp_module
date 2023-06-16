@@ -9,6 +9,9 @@
 class BitcoinExchange {
 private:
     std::map<std::string, double> prices;
+    
+    bool isDigits(const std::string &str) const;
+    void DateValidation(const std::string &date) const;
 public:
     BitcoinExchange();
     BitcoinExchange(const BitcoinExchange& other);

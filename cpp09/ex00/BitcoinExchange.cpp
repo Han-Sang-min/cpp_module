@@ -15,17 +15,25 @@ BitcoinExchange::BitcoinExchange() {
         std::getline(file, line);
         if (line != "date,exchange_rate")
             throw std::runtime_error("Error: Unknown header format");
+        // not yet testing
     }
 
     /* rest line of csv processing part */
-    /* [FEAT]add error handle. for instance string, double, separator */
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string date;
         double exchange_rate;
-        std::getline(ss, date, ',');
+        size_t pos = line.find(',');
+
+        /* delimiter validation */
+        if (pos == std::string::npos) {
+            throw std::runtime_error("Invalid date format: " + line);
+        }
+        
+        date = line.substr(0, pos);
+        DateValidation(date);
+        ss.ignore(pos + 1);
         ss >> exchange_rate;
-        std::cout << date << exchange_rate << std::endl;
         prices[date] = exchange_rate;
     }
 }
@@ -77,6 +85,50 @@ void BitcoinExchange::compute_prices(const std::string& filename) {
         double result = value * price;
         std::cout << date << " => " << value << " = " << result << std::endl;
     }
+}
+
+bool BitcoinExchange::isDigits(const std::string &str) const {
+    for (size_t i = 0; i < str.size(); ++i) {
+        if (!isdigit(str[i]))
+            return 1;
+    }
+    return 0;
+}
+
+void BitcoinExchange::DateValidation(const std::string &date) const
+{
+    /* basic format validation */
+    {
+        if (date.size() != 10 || date[4] != '-' || date[7] != '-')
+            throw std::runtime_error("Invalid date format: " + date);
+    }
+
+    /* validate each element is number */
+    std::string month_str = date.substr(5, 2);
+    std::string day_str = date.substr(8, 2);
+    {
+        std::string year_str = date.substr(0, 4);
+        if (isDigits(year_str) || isDigits(month_str) || isDigits(day_str))
+            throw std::runtime_error("Invalid date format: " + date);
+    }
+    
+    /* month & day range validation */
+    int month = std::atoi(month_str.c_str());
+    int day = std::atoi(day_str.c_str());
+    if (month < 1 || month > 12) {
+        throw std::runtime_error("Invalid month: " + month_str);
+    }
+
+    int max_day;
+    if (month == 2) {
+        max_day = 28;
+    } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+        max_day = 30;
+    } else {
+        max_day = 31;
+    }
+    if (day < 1 || day > max_day) 
+        throw std::runtime_error("Invalid day: " + day_str);
 }
 
 BitcoinExchange::~BitcoinExchange() {}
