@@ -24,7 +24,6 @@ int RPN::Calculate(const std::string& input) {
 		if (token.size() != 1)
 			throw std::runtime_error("Invalid input");
 		
-		/* if it's number, push in stack */
 		if (token >= "0" && token <= "9") {
 			numStack.push(token[0] - '0');
 		} else if (token == "+" || token == "-" || token == "*" || token == "/") {

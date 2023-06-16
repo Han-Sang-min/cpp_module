@@ -14,11 +14,7 @@ int main(int argc, char** argv) {
 	try {
 		RPN rpn;
 		std::string input;
-		for (int i = 1; i < argc; ++i) {
-			if (i > 1)
-				input += " ";
-			input += argv[i];
-		}
+		input += argv[1];
 		int result = rpn.Calculate(input);
 		std::cout << result << std::endl;
 	} catch (const std::exception& e) {
