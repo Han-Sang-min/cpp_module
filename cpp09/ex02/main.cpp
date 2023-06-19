@@ -2,27 +2,42 @@
 #include <ctime>
 #include <list>
 #include <vector>
+#include <sstream>
 #include "PmergeMe.hpp"
 
-void print_vector(const std::vector<int>& vec) {
-    for (std::vector<int>::const_iterator it = vec.begin(); it != vec.end(); ++it) {
+void print_vector(const std::vector<unsigned int>& vec) {
+    for (std::vector<unsigned int>::const_iterator it = vec.begin(); it != vec.end(); ++it) {
         std::cout << *it << ' ';
     }
     std::cout << '\n';
 }
 
 int main(int ac, char *av[]) {
-	if (ac == 1) {
-		std::cout << "Not found argument" << std::endl;
-		return 1;
-	}
-
-    std::vector<int> nums;
-
-	for (int i = 1; i < ac; ++i) {
-		// ㅇㅔ러 체크  추가, ex negetive nuber, charter
-        nums.push_back(std::atoi(av[i]));
+    if (ac == 1) {
+        std::cout << "Not found argument" << std::endl;
+        return 1;
     }
+
+    std::vector<unsigned int> nums;
+
+    /* Error handle */
+    for (int i = 1; i < ac; ++i) {
+        std::string arg = av[i];
+        for (std::string::const_iterator it = arg.begin(); it != arg.end(); ++it) {
+            if (!isdigit(*it)) {
+                std::cout << "Error" << std::endl;
+                return 1;
+            }
+        }
+        std::stringstream ss(av[i]);
+        unsigned int num;
+        if (!(ss >> num)) {
+            std::cout << "Error" << std::endl;
+            return 1;
+        }
+        nums.push_back(num);
+    }
+
 
     PmergeMe tester;
 
@@ -58,5 +73,3 @@ int main(int ac, char *av[]) {
 
     return 0;
 }
-
-// add, error handle, ex:negetive number

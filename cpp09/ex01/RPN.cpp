@@ -22,7 +22,7 @@ int RPN::Calculate(const std::string& input) {
 	while (iss >> token) {
 		/* Check if it's a single character */
 		if (token.size() != 1)
-			throw std::runtime_error("Invalid input");
+			throw std::runtime_error("Error");
 		
 		if (token >= "0" && token <= "9") {
 			numStack.push(token[0] - '0');
@@ -49,7 +49,7 @@ int RPN::Calculate(const std::string& input) {
 	}
 
 	if (numStack.size() != 1) {
-		throw std::runtime_error("Invalid input");
+		throw std::runtime_error("Error");
 	}
 
 	return numStack.top();

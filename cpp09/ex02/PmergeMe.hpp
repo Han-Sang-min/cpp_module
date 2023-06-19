@@ -13,8 +13,8 @@ public:
     PmergeMe& operator=(const PmergeMe& rhs);
     ~PmergeMe();
 
-	void init_container1(std::vector<int> &vec);
-	void init_container2(std::vector<int> &vec);
+	void init_container1(std::vector<unsigned int> &vec);
+	void init_container2(std::vector<unsigned int> &vec);
 	
     void sort_container1();
     void sort_container2();
@@ -22,8 +22,8 @@ public:
     void print_and_check_sorted();
 
 private:
-    std::vector<int> container1;
-    std::deque<int> container2;
+    std::vector<unsigned int> container1;
+    std::deque<unsigned int> container2;
 
 	template<typename T>
 	std::vector<T> split_into_k(T& container, int k) {
@@ -37,7 +37,6 @@ private:
 			}
 			res.push_back(tmp);
 		}
-
 		return res;
 	}
 
@@ -50,7 +49,7 @@ private:
 		int size = arr.size();
 
 		for (int i = 1; i < size; i++) {
-			int key = arr[i];
+			unsigned int key = arr[i];
 			int j = i - 1;
 
         while (j >= 0 && arr[j] > key) {
